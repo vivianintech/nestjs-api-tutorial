@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:14.15.4 as base
+FROM node:14.17.0 as base
 
 WORKDIR /code
 
@@ -12,6 +12,6 @@ COPY . .
 RUN yarn test
 
 FROM base as prod
-RUN yarn install --production
+RUN yarn install
 COPY . .
 CMD [ "node", "src/main.ts" ]

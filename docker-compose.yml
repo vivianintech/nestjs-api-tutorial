@@ -1,15 +1,6 @@
 version: '3.8'
 
 services:
-  notes:
-    image: iamamateur/nestjs-practice
-    build:
-      context: .
-    ports:
-      - 5434:5432
-    environment:
-      - SERVER_PORT=5434
-
   dev-db:
     image: postgres:13
     ports:
@@ -18,26 +9,13 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: nest
-    networks:
-      - freecodecamp
-
-  db:
-    image: postgres:13
-    ports:
-      - 5434:5432
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123
-      POSTGRES_DB: nest
     volumes:
-      - postgres:/data/db
-      - postgres_config:/data/configdb
+      - postgres:/var/lib/postgresql/data
     networks:
       - freecodecamp
 
 volumes:
   postgres:
-  postgres_config:
 
 networks:
   freecodecamp:
