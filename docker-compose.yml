@@ -29,8 +29,15 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: nest
+    volumes:
+      - postgres:/data/db
+      - postgres_config:/data/configdb
     networks:
       - freecodecamp
+
+volumes:
+  postgres:
+  postgres_config:
 
 networks:
   freecodecamp:
